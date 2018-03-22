@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 11 - Discrete Mathematics}
+\author{Matt Chung}
+\date{November 9th, 2017}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{wasysym}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+If $a > 0$ and $b > 0$ then $ab > 0$. Now prove the following:
+
+\begin{itemize}
+    \item If $a < 0$ and $b < 0$, then $ab > 0$ 
+    \item If $a < 0$ and $b > 0$, then $ab < 0$
+\end{itemize}
+
+%Suppose $a < 0$ and $b < 0$. Using the ordering of integers rule number 2, we can rewrite the expression $a < b$ and $c<0$, then $bc < ac$; let's substitute $b$ for 0 and $c$ for $b$, giving us: $a < 0$ and $b < 0$, then $0b < a0$. Okay, this is obviously wrong because anything multiplied by zero gives us zero. So, zero CANNOT be less than (or equal to) zero. So, what the hell?
+
+% This is me just taking notes. I'm scrambling right now, unsure where to begin. So what I'm doing, instead, is re-reading snippets of the chapter, trying to grasp how to formulate the proof.  Cause the question now is: which rule should I use? There are so many: associate, commutative. But, I'm guessing something with identity.
+
+%Okay, still lost. I'm try a different approach. I'll just try formulating the answer without all the technical jargon.
+
+%Going to try and explore the concept of ordering of integers being relation: transitive, antisymmetric, and reflexive. Maybe simmering on this idea will spark a new thought.
+
+%Let's try rewriting the formula. Let's stick with $a < 0$ but switch things up for $b$: $0 > b$. Now that we flipped these two, I'm going to try and apply one of the rules:
+
+\subsection{}
+
+Since $a<0$, multiplying both sides of $b < 0$, will give us $ab > a0$ according to one of the rules of inequalities. A theorem in this lesson tells us $a0 = 0$. So $ab > a0$ is the same as $ab > 0$, and that is what we need to show. $\clubsuit$
+
+\subsection{}
+
+Since $a<0$, multiplying both sides of $b > 0$, will give us $ab < a0$, according to one of the rules of inequalities. A theorem in this lesson tells us $a0 = 0$. So $ab < a0$ is the same as $ab < 0$, and that is what we need to show. $\clubsuit$.
+
+\section{}
+
+
+If $ab=0$,then either $a=0$ or $b=0$.
+
+We can use an indirect proof to prove the following:
+
+\begin{itemize}
+    \item a and b are both positive
+    \item a is positive and b is negative
+    \item a is negative and b is positive
+    \item a is negative and b is negative
+\end{itemize}
+
+In the first case, both $a$ and $b$ are positive. In other words, $a >0$ and $b > 0$. If we multiply $a > 0$ by $b$, we get: $ab >0$ because of the rules of the inequalities in the lesson. Therefore, $ab$ is definitely not 0. 
+
+In the second case, $a$ is positive and $b$ is negative. In other words, $a > 0$ and $b < 0$. If we multiply $a > 0$ by $b$, we get $ab < 0$ due to the rules of inequalities in the lesson. Therefore, $ab$ is not 0.
+
+In the third case, $a$ is negative and $b$ is positive. In other words, $a < 0$ and $b > 0$. Similar to the first and second case, we multiply $a < 0$ by $b$, giving us $ab < 0$ due to the rules of inequalities in this lesson. Therefore, $ab$ is not 0.
+
+Finally, in the third case, $a$ is negative and $b$ is negative. In other words, $a < 0$ and $b < 0$. When we multiply $a < 0$ by $b$, we get $ab > 0$ due to the rules of inequalities in this lesson. Therefore, $ab$ is not 0. So collectively, this proves that $ab=0$ if $a=0$ or $b=0$. $\clubsuit$.
+
+\section{}
+
+Determine all integers that 0 divides.
+
+\textbf{Solution:} $\{0\}$
+
+The question is asking us to find all integers $a$ which satisfy: $0|a$. This can be expressed as: $0c = a$. Since we know that $0$ multiplied by any integer results $0$, then we know that the only integer that satisfies this statement is $0$.
+
+\section{}
+
+For integers $r, s, t$, if $r|s$, then $r|st$.
+
+%So, basically, we need a proof for this. So can I prove this—via a direct proof?
+
+%What must I do, mathematically, to prove that $s$ multiplied to $t$ keeps the following true: $r|st$.
+
+\textbf{Solution}:
+
+Suppose $r, s$ and $r|s$. That means, $rc=s$ for some integer $c$. Let's multiply each side by $t$, giving us $rct = st$.  We can use the associative law to regroup the multiplication, giving us: $r(ct) = st$. This is equivalent to $r|st$, what we are trying to prove. $\clubsuit$.
+
+\section{}
+
+Determine the quotient and remainder when 107653 is divided by 22869.
+
+\textbf{Solution:}
+
+\begin{align*} 
+a = qd + r \\
+107653 = 22869(4) + 16177
+\end{align*}
+
+I basically plugged 107653 into the calculator, dividing the integer by 22869; the answer was 4.707 so I then multiplied 22869 by 4 (the quotient), subtracting that number from 107653, which then gave me the remainder: 16177.
+
+\section{Bonus}
+
+If $p$ is a prime, then $2p + 1$ is a prime.
+
+This is absolutely false. Here is a counter example.
+
+To disprove this theorem, we explicity specify an integer $p$ that is a prime but $2p + 1$ is not a prime.  In fact, 7 is a prime number, and if we substitute it in for $p$ then we get: $2(7) + 1 = 15$. This is not a prime since it is divisible by 5 and 3. So $p=7$ is a counterxample to this proposition. $\clubsuit$
+\end{document}

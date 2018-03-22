@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 10 - Discrete Mathematics}
+\author{Matt Chung}
+\date{October 17th, 2017}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{wasysym}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+Use induction to prove: For every integer $n \ge 1$: 
+
+$1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + ... + n(n+1) = \frac{n(n+1)(n+2)}{3}$\\
+
+\textbf{Basis:}
+
+Let's check the first instance:
+
+$\frac{n(n+1)(n+2)}{3} = \frac{1(1 + 1)(1 + 2)}{3} = \frac{1(2)(3)}{3} = \frac{6}{3} = 2$
+
+Both the left hand side and the right hand side are equal as claimed.
+
+\textbf{Inductive Step} 
+
+Now suppose
+
+$1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + ... n(n+1) = \frac{n(n+1)(n+2)}{3}$\\
+
+We would need to verify 
+$1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + ... n(n+1) + (n+1)((n+1)+1) = \frac{n(n+1)(n+2)}{3}$
+
+Here are the computations:
+
+\begin{align*}
+1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + ... + n(n+1) &= 1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + ... n + (n+1)(n + 1 +1) \\
+                                               &= \frac{n(n+1)(n+2)}{3} + (n+1)(n+1+1), \text{Using the inductive hypothesis} \\
+                                               &= \frac{n(n+1)(n+2)}{3} + (n+1)(n+2) \\
+                                               &= \frac{n(n+1)(n+2)}{3} + \frac{(n+1)(n+2)}{3} \\
+                                               &= \frac{n(n+1)(n+2)(n+3)}{3}\\
+\end{align*}
+
+as we needed to show. So we can conclude all statements are true. $\clubsuit$
+
+\section{}
+Using only $3\cent$ stamps and $5\cent$ stamps, any postage amount $8\cent$ or greater can be formed.
+
+\textbf{Basis}: $8\cent$ can be formed using $3\cent$ stamp and a $5\cent$ stamp
+
+%Okay, this is pretty difficult. I'm blocked. Because I cannot wrap my mind around what the author is talking about when they present the two cases.
+
+\textbf{Inductive step}: Now suppose we can form a $n\cent$ postage for some $n \ge 8$. We need to show that we can form $(n+1)\cent$ postage. Since $n \ge 8$, when we form $n\cent$ postage, we must use either (1) at least three $3\cent$ stamps, or (2) at least one $5\cent$ stamp. For if both those possibilities are wrong, we will have at most $6\cent$ postage.
+
+Case 1: 
+If there are three (or more) $3\cent$ in the $n\cent$ postage, remove three $3\cent$, and put in two $5\cent$ stamps. Since we removed $9\cent$ and put back $10\cent$, we now have $(n+1)\cent$ postage.
+
+Case 2:
+If there is one (or more) $5\cent$ postage, remove one $5\cent$ postage and add two $3\cent$. Since we removed $5\cent$ and added back $6\cent$, we now have $(n+1)\cent$ postage.
+
+So in any case, if we can make $n\cent$ postage for some $n \ge 8$, we can form $(n+1)\cent$ postage. Thus, by induction, we can make any postage amount $8\cent$ or greater.$\clubsuit$
+
+\section{}
+
+\textbf{Basis}:  We can certainly make
+
+
+\begin{itemize}
+    \item[] $8\cent = (1)3\cent + (1)5\cent$
+    \item[] $9\cent = (3)3\cent$
+    \item[] $10\cent = (2)5\cent$
+\end{itemize}
+
+%It's worth mentioning that, at the moment, I have zero clue how second induction works. I'm merely copying, and replacing, the textbook's solution to a similar problem.
+
+\textbf{Inductive step}: Suppose that we can make all the postage amounts from $8\cent$ up to some amount $k\cent$ where $k \ge 10$. Now consider the problem of making $(k+1)\cent$. We can make $(k + 1 - 3)\cent = (k - 2)\cent$ postage since $k-2$ is between 8 and k. Adding a $3\cent$ stamp to that gives the needed $k+1\cent$ postage. $\clubsuit$
+
+\section{}
+A sequence is defined recursively by the rules: $(1) a0 = 0$, and (2) for $n \ge 1, an = 2a_{n - 1} + 1$
+Use induction to prove $an = 2n - 1$ for all $n \ge 0$.
+
+\textbf{Basis:}
+
+So, let's plug in the first (valid) number: $1$.
+
+$a_{1} = 2a_{1-1} + 1 = 2a_0 + 1 = 2(0) + 1 = 1$
+
+\textbf{Inductive step}:
+
+Let's prove where $n \ge 1$.
+
+\begin{align*}
+a_{n+1} &= 2a_{n} + 1, \\
+        &= 2(2^n-1) + 1 \\
+        &= 2^{n+1} - 2 + 1 \\
+        &= 2^{n+1} - 1, \text{as we needed to show} \clubsuit
+\end{align*}
+
+\newpage
+
+\section{}
+
+For every integer $n \ge 1$, the number $n^5 - n$ is a multiple of 5.
+
+\textbf{Basis:} Let's check the statement:
+
+\begin{itemize}
+    \item[] $1 = 1^5 - 1 = 0$
+\end{itemize}
+
+%I need the equation placed on the left side of the equation. But how do I get it cause all I have right now is the right side. 
+%0, 5, 10, 15, 20, 25, 30 ... 5n = $n^5 - n$
+
+%0, 30, 240, 1020, 7770 ... = $n^5 - n$
+
+%Okay, I need to pause from this because I'm going: no where.
+
+%I am getting a better feel, after watching this video: 
+
+$n^5 - n = 5m$
+
+\begin{align*}
+1^5 - 1 &= 1 - 1 \\
+        &= 0 \\
+        &= 5 \cdot 0 \\
+\end{align*}
+
+\textbf{Induction}:
+Assume $k^5 - k = 5m$
+
+\begin{align*}
+(k+1)^5 - (k+1) &= (k+1)(k+1)(k+1)(k+1)(k+1) - (k+1) \\
+                &= (k^2 + 2k + 1)(k+1)(k+1)(k+1) - (k+1) \\
+                &= (k^3 + k^2 + 2k^2 + 2k + k + 1)(k+1)(k+1) - (k+1)\\
+                &= (k^3 + 3k^2 + 3k + 1)(k+1)(k+1) - (k+1) \\
+                &= (k^4 + k^3 + 3k^3 + 3k^2 + 3k^2 + 3k + k + 1)(k+1) - (k-1) \\
+                &= (k^4 + 4k^3 + 6k^2 + 4k + 1)(k+1) - (k-1) \\
+                &= (k^5 + k^4 + 4k^4 + 4k^3 + 6k^3 + 6k^2 + 4k^2 + 4k + k + 1) - (k-1) \\
+                &= (k^5 + 5k^4 + 10k^3 + 10k^2 + 5k + 1) - (k -1 ) \\
+                &= k^5 + 5k^4 + 10k^3 + 10k^2 + 5k + 1 - k -1  \\
+                &= k^5 -k + 5k^4 + 10k^3 + 10k^2 + 5k \\
+                &= 5m + 5k^4 + 10k^3 + 10k^2 + 5k \\
+                &= 5(m + k^4 + 2k^3 + 2k^2 + k) \\
+                & \text{Let } m + k^4 + 2k^3 + 2k^2 + k = t \in N) \\
+                &= (k+1)^5 - (k+1) = 5t \clubsuit
+\end{align*}
+
+
+\newpage
+\section{}
+
+For each positive integer $n$, the sum of the first $n$ odd positive integers is $n^2$.
+
+The first question that sprung to mind was: how do we represent (mathematically) the first $n$ odd positive integers? Thanks to the previous chapter on relations, I know that an odd number, by definition, is $2n -1$. Also, again pulling from a previous chapter (i.e. sequences), I know we can represent a sequence of numbers using summation.  With these two pieces of information, I can now proceed to prove the following:
+
+
+$$\sum_{i=1}^{n} 2i-1 = n^2$$
+
+\textbf{Basis}: When $n$ = 1, we have: $$\sum_{i=1}^{1} 2(1)-1 = 2 - 1 = 1$$
+
+Inductive Step: Now suppose: $$\sum_{i=1}^{n} 2n - 1 = (n+1)^2$$ is true for some $n \ge 1$. Then, we see that
+
+\begin{align*}
+\sum_{i=1}^{n+1} 2n - 1 &= \left(\sum_{i=1}^{n+1}\right) + 2(n+1) - 1, \text{by the recursive definition of a sum,} \\
+                        &= n^2 + 2(n+1) - 1, \text{ by induction hypothesis}\\
+                        &= n^2 + 2n + 2 -1,\\
+                        &= n^2 + 2n + 1, \\
+                        &= (n+1)^2 .\\
+\end{align*}
+
+$\clubsuit$
+
+
+
+\end{document}

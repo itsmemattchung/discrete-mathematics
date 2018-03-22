@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 17 - Discrete Mathematics}
+\author{Matt Chung}
+\date{February 14, 2018}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{wasysym}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{indentfirst}
+
+\begin{document}
+\maketitle
+
+\section{}
+\textbf{Solution: } 491
+
+Let's denote each of the majors as follows:
+
+\begin{itemize}
+    \item $|A| =  Math$
+    \item $|B| = Chemistry$
+    \item $|C| = Biology$
+    \item $|D| = Geology$
+    \item $|E| = Physics$
+    \item $|F| = Anthropology$
+\end{itemize}
+
+We then need to apply the inclusion/exclusion formula, adding all the singletons and removing all the pairs. And if there were any triplets, but there aren't in this situation, we would need to add them back. So, let's apply the formula:
+
+\begin{align*}
+   &= |A| + |B| + |C| + |D| + |E| + |F| - |A \cap E| - |A \cap B| - |A \cap C| - |B \cap C| - |C \cap F| \\
+   &= 70 + 160 + 230 + 56 + 24 + 35 - 12 - 10 - 4 - 53 - 5 \\
+   & = 491 \\
+\end{align*}
+
+
+\newpage
+
+\section{}
+
+\textbf{Solution: } $2^{15}$
+
+Let's visually represent the patterns.
+
+\begin{itemize}[label={}]
+  \item 1 0 1 \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_
+  \item \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ 1 0 0 1
+  \item \_ \_ 1 0 1 0 \_ \_ \_ \_ \_ \_ \_ \_ \_
+\end{itemize}
+
+Assuming the first pattern is $|A_1|$, the second $|A_2|$, the third $|A_3|$, we apply the inclusion/exclusion theorem, calculating the union of the three sets.
+
+$A_1 \cup A_2 \cup A_3 = |A_1| + |A_2| + |A_3| - |A_1 \cap A_2| - |A_1 \cap A_3| - |A_2 \cap A_3| + |A_1 \cap A_2 \cap A_3|$
+
+Replacing the symbols with the number of permutations, we get:
+
+\begin{align*}
+   &= 2^{12} + 2^{11} + 2^{11} - 2^8 - 2^9 - 2^7 + 2^5 \\
+   &= 2^{15} \\
+\end{align*}
+
+
+
+
+\section{}
+
+\subsection{}
+
+Let's assume there are 8 people and 7 days in a week. We start with evenly distributing the births of the first 7 people, each birth landing on a different day of the week. In other words, one person born on Sunday, the next on Monday, the third on Tuesday, and so on. After assigning each of those seven people a birth day, we now have a person born on every day of the week. Now, let's consider the final person: the eighth person. Regardless of the day this person is born, it's guaranteed that the person's birth day lands on a day in which there exists at least one person, proving that in a group of eight, at least two people are born on the same day. $\clubsuit$
+
+\subsection{}
+
+Let's assume that there are 80 people and seven days in a week. If we evenly distribute the births of the first 77 people -- first person on Monday, next on Tuesday, and so on -- then we'll arrive at 11 people born on each of the 7 days. Now, we're left with 3 people. And since 11 people are born on each of the days of the week, the next person born will tip the total number of births to 12, proving that at least 12 people (out of 80) will be born on the same day of the week. $\clubsuit$.
+
+\section{}
+
+\textbf{Solution:} 11
+
+A Plutonian with three feet would reach into box and in the worst case scenario, when trying to choose 3 same colored socks, would choose a pair of each color: 2 red, 2 blue, 2 yellow, 2 green, 2 white. With a pair of socks for each color, 10 in total, the Plutonian's next choice guarantees they will now have a 3 of the same colored socks. Therefore, the number of minimum of socks a Plutonian must pick is 11 in order to guarantee a triplet of the same colored socks. $\clubsuit$
+
+\section{}
+
+For $j=1,2,...75$ days, let $t_j$ equal the total number of hours Al studies up to and including day j. Since he studies at least one hour every day, the total number of hours is no more than 75, we see: 
+
+\begin{align*}
+   0 < t_1 < t2 ... < t_{75} < 125
+\end{align*}
+
+
+Adding 24 to each term, we get: 
+\begin{align*}
+   24 < t_1 + 24 < t_2 + 24 ... < t_{75} + 24 \leq 149
+\end{align*}
+
+So we have 150 integers $t_1, t_2 ... t_{75}, t_1 + 24 ... t_{75} + 24$, all between 1 and 149. By the pigeonhole principle, some two must be equal and the only way that can happen is for $t_i = t_j + 24$ for some $i$ and $j$. It follows that $t_i - t_j = 24$ and since the difference $t_i - t_j$ is the total number of hours Al studied from day $j + 1$ to day $i$, that shows there is a sequence of consecutive days which he studied exactly 24 hours. $\clubsuit$
+
+
+\newpage
+
+\section{Bonus}
+
+\textbf{Solution: } $120 - 60 + 20 - 5 + 1 = 76$
+
+First, let's include every single set: 
+
+\begin{align*}
+|A_1| + |A_2| + |A_3| + |A_4| + |A_5| = 4! + 4! + 4! + 4! + 4! = 120
+\end{align*}
+
+Next, we need to exclude every pair in the set. Each pair has two digits fixed in place. For example, say we want calculate the intersection of $|A_1 \cap A_2|$. And let's assume $|A_1|$ represents digit 1 fixed in the first position, $|A_2|$ the second position. With 1 and 2 in place, that leaves us 3 positions that we can rotate around. In other words, this gives us $3!$. Since there are 10 combinations , $\binom{5}{2}$, the total number number of permutations for all the pairs is: 
+
+\begin{align*}
+(3!)(10) = 60
+\end{align*}
+
+
+After excluding the pairs, we need to include the triplets. Similar to the pairs, the total number of combinations of triplets is $\binom{5}{3}$. However, the number of permutations differ to the pairs. In this case, we fix three digits in their position. For example, say we combine the triplet: $|A_1 \cap A_2 \cap A_3|$. This triplet can be visualized as 1 2 3 \_ \_ . The 2 empty slots can be represented as a permutation $2!$. Therefore, the total number of permutations for the triplets are:
+
+\begin{align*}
+(2!)(10) = 20
+\end{align*}
+
+After adding triplets, we must remove quadruplets, the total combinations equaling to $\binom{5}{4} = 5$. With 5 combinations, and 1 permutation per combination, we must remove 5:
+
+\begin{align*}
+(1!)(5) = 5
+\end{align*}
+
+Finally, we'll need to add back the intersection of all the sets: $|A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5|$. This intersection equates to a single permutation, with all digits in place: $1 2 3 4 5$. Put differently, there is one and only one way intersection of all those sets.
+
+Stringing all those together, we get the following:
+
+\begin{align*}
+120 - 60 + 20 - 5 + 1 = 76
+\end{align*}
+
+In summary, here's what I did:
+
+$(|A_1| + |A_2| + |A_3| + |A_4| + |A_5|) - (|A_1\cap A_2| + |A_1 \cap A_3| + |A_1 \cap A_4| + |A_1 \cap A_5| + |A_2 \cap A_3| + |A_2 \cap A_4| + |A_2 \cap A_5| + |A_3 \cap A_4| + |A_3 \cap A_5| + |A_4 \cap A_5|) + (|A_1 \cap A_2 \cap A_3| + |A_1 \cap A_2 \cap A_4| + |A_1 \cap A_2 \cap A_5| + |A_1 \cap A_3 \cap A_4| + |A_1 \cap A_3 \cap A_5| + |A_2 \cap A_3 \cap A_4| + |A_2 \cap A_3 \cap A_5| + |A_3 \cap A_4 \cap A_5|) - (|A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5|)$
+
+\end{document}

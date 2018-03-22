@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 08 - Discrete Mathematics}
+\author{Matt Chung}
+\date{September 24 2017}
+\usepackage{tikz}
+\usepackage{verbatim}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+\maketitle
+
+\section{}
+\textbf{Solution:} 399
+
+Since the initial term is 3 and the common difference is 4, we know that the sequence increases; the second number is 7, the third 11, the fourth 15, and so on.  But instead of enumerating each number, one by one, we can formulate an equation: $3 + 4(n-1)$. This equation holds true: if we replace $n$ with $1$, we get: $3 + 4(1-1) = 3 + 4(0) = 3$; similarly, if we substitute $n$ for $2$, we get: $3 + 4(2-1) = 3 + 4(1) = 3 + 4 = 7$. Therefore, let's substitute $n$ with $100$, giving us: $3 + 4(100-1) = 3 + 4(99) = 3 + 396 = 397$.
+
+Now, since the question asks for the 100th term, we can replace $n$ with $100$: $3 + 4(100-1) = 3 + 4(99) = 3 + 396 = 397$
+
+\section{}
+
+\textbf{Solution: } $$\sum_{k=-2}^{4} (2k + 3) = 35$$
+
+\noindent Here's our equation, with the variables substituted:
+
+\noindent $(2(-2) + 3) + (2(-1) + 3) + (2(0) + 3) + (2(1) + 3) + (2(2) + 3) + (2(3) + 3) + (2(4) + 3)$  = 
+$(-4 + 3) + (-2 + 3) + (0 + 3) + (2 + 3) + (4 + 3) + (6 + 3) + (8 + 3)$  = $(-1) + (1) + (3) + (5) + (7) + (9) + (11) = 35$
+
+\pagebreak
+
+\section{}
+
+\textbf{Solution: } $$\sum_{i=0}^{99} (-\frac{1}{2})^{i} = \frac{2}{3}(1 - (-\frac{1}{2})^{100})$$
+
+$\frac{a-ar^{n}}{1 -r } = a(\frac{1-r^{n}}{1-r})$
+
+$\frac{1-1(-\frac{1}{2})^{100}}{1 -(-\frac{1}{2}) } = \frac{1-(-\frac{1}{2})^{100}}{1 -(-\frac{1}{2}) } =\frac{1-(-\frac{1}{2})^{100}}{\frac{3}{2} } = \frac{2}{3}(1 - (-\frac{1}{2})^{100})$
+
+\section{}
+
+\subsection{}
+
+\textbf{Solution:} $a_0 = 2, a_1 = 3, a_2 = 8, a_3 = 63, a_4 = 3968$
+
+\begin{itemize}
+    \item $a_0 = 2$
+    \item $a_1 = a^2_{1-1} - 1 = a^2_{0} - 1 = 2^2 - 1 = 3$
+    \item $a_2 = a^2_{2-1} - 1 = a^2_{1} - 1 = 3^2 - 1 = 8$
+    \item $a_3 = a^2_{3-1} - 1 = a^2_{2} - 1 = 8^2 - 1 = 63$
+    \item $a_4 = a^2_{4-1} - 1 = a^2_{3} - 1 = 63^2 - 1 = 3968$
+\end{itemize}
+
+\subsection{}
+
+\textbf{Solution: } $u_1 = 1; u_2 = 5; u_3 = 19, u_4 = 65; u_5 = 211$ and the closed form formula is: $3^n - 2^n$;
+
+Here's what given: $u_1 = 1; u_2 = 5; u_n = 5u_{n-1} - 6u_{n-2}$
+
+Let's substitute the values for next three terms:
+
+\begin{itemize}
+    \item $5u_{n-1} - 6u_{n-2} = 5u_{3-1} - 6u_{3-2} = 5u_{2} - 6u_{1} = 5(5) - 6(1) = 25 - 6 = 19$
+    \item $5u_{n-1} - 6u_{n-2} = 5u_{4-1} - 6u_{4-2} = 5u_{3} - 6u_{2} = 5(19) - 6(5) = 95 - 30 = 65$
+    \item $5u_{n-1} - 6u_{n-2} = 5u_{5-1} - 6u_{5-2} = 5u_{4} - 6u_{3} = 5(65) - 6(19) = 325 - 114 = 211$
+\end{itemize}
+
+Thanks to the hint from the text, I was able to guess a closed form formula, through trial and error. I arrived at the following formula: $n^3 - n^2$.
+
+\begin{itemize}
+    \item $3^n - 2^n = 3^1 - 2^1 = 3 - 2 = 1$
+    \item $3^n - 2^n = 3^2 - 2^2 = 9 - 2 = 5$
+    \item $3^n - 2^n = 3^3 - 2^3 = 27 - 8 = 19$
+    \item $3^n - 2^n = 3^4 - 2^4 = 81 - 16 = 65$
+    \item $3^n - 2^n = 3^5 - 2^5 = 243 - 32 = 211$
+\end{itemize}
+
+As an aside, I had originally formulated the follow equation: $n^{3} - (n^{2} -1)$. Surprisingly, this equation generated the correct values for the first few terms. But, after the fourth term, the formula started falling apart.
+
+\section{}
+
+\textbf{Solution:} $a_1 = a$; for $n \ge 2$,  $a_n = ra_{n-1}$ 
+
+Given the solution above, let's see how we could compute the first four terms.
+
+\begin{itemize}
+    \item $a_1 = ra_{1-1} = ra_{0}$
+    \item $a_2 = ra_{2-1} = ra_{1}$
+    \item $a_3 = ra_{3-1} = ra_{2}$
+    \item $a_4 = ra_{4-1} = ra_{3}$
+\end{itemize}
+
+
+\section{}
+
+\textbf{Solution: } $$\sum_{i=1}^{n} \frac{1}{2i - 1}$$
+
+Since I almost made the grave mistake of using the $n$ as the index (despite the text's warning), let's make sure that if I substitute $n$ with 5, we mirror following: $\frac{1}{1} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{9}$.
+
+With $n$ equal to 5:
+
+$\frac{1}{(2(1) -1)} = \frac{1}{(2 - 1)} = \frac{1}{1}$ \\
+
+$\frac{1}{(2(2) -1)} = \frac{1}{(4 - 1)} = \frac{1}{3}$\\
+
+$\frac{1}{(2(3) -1)} = \frac{1}{(6 - 1)} = \frac{1}{5}$\\
+
+$\frac{1}{(2(4) -1)} = \frac{1}{(8 - 1)} = \frac{1}{7}$\\
+
+$\frac{1}{(2(5) -1)} = \frac{1}{(10 - 1)} = \frac{1}{9}$\\
+
+
+\end{document}

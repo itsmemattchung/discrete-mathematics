@@ -1,0 +1,383 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 19 - Discrete Mathematics}
+\author{Matt Chung}
+\date{March 20, 2018}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{indentfirst}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+\textbf{Solution:} $a_n = 2^n$.
+
+Problem: $a_0 = 1$ and $a_n = 2a_{n-1}$, for $n \ge 1$.
+
+First, let's determine characteristic equation by setting $a_n = r^n$. We then cancel out $r^{n-1}$, giving us the following characteristic equation:
+
+\begin{align*}
+    r^n &= 2r^{n-1} \\
+    r^n - 2r^{n-1} &= 0 \\
+    (r-2) &= 0
+\end{align*}
+
+Since the characteristic equation is $(r-2)$, then our characteristic root is $r=2$. That means our general solution is:
+
+\begin{align*}
+a^{(h)}_n &= 2a^{(h)}_{n-1} \\
+          &= \alpha2^n
+\end{align*}
+
+Now that we solved for the general solution, let's plug in our initial values, solving for the coefficient:
+
+\begin{align*}
+1 &= \alpha2^0 \\
+1 &= \alpha \\
+\alpha &= 1 \\
+\end{align*}
+
+Now that we solved for our coefficient, our entire solution is:
+
+\begin{align*}
+a_n &= 2^n \\
+\end{align*}
+
+To prove that this is correct, let's recursively solve the problems for a few values and compare them against the values we arrive at when using the closed form formula.
+
+\begin{align*}
+a_1 &= 2a_{n-1}, 2a_{1-1}, 2a_0, (2)(1), 2\\
+a_2 &= 2a_{n-1}, 2a_{2-1}, 2a_1, (2)(2), 4\\
+a_3 &= 2a_{n-1}, 2a_{3-1}, 2a_2, (2)(4), 8\\
+\end{align*}
+
+Now that we solved the problem recursively, let's calculate $a_1$ using the closed form:
+
+\begin{align*}
+a_1 &= 2^1, 2\\
+a_2 &= 2^2, 4 \\
+a_3 &= 2^3, 8 \\
+\end{align*}
+
+\section{}
+\textbf{Solution: } $a_n = 2(2)^n - 1$
+
+Problem: $a0=1$ and $a_n = 2a_{n-1} +1$ for $n \ge 1$
+
+First, we need to solve for the general solution, starting with identifying our characteristic equation. The characteristic equation is $(r-2)$, giving us the characteristic root of $2$. Therefore, our general solution is:
+
+\begin{align*}
+    a^{(h)} = \alpha(2)^n
+\end{align*}
+
+And before we can solve for the coefficient of this homogeneous solution, we need to solve for the particular solution. Since $f(n)$ is a constant, let's use $A$; in other words: $a_n = A$
+
+\begin{align*}
+    A &= 2A + 1 \\
+    0 &= A + 1 \\
+    A &= -1 \\
+\end{align*}
+
+Now that we solved for our particular solution, we can combine it with our homogeneous solution and the initial condition, in order to solve for our coefficient, giving us:
+
+\begin{align*}
+    1 &= \alpha(2)^0 - 1 \\
+    1 &=\ \alpha - 1 \\
+    \alpha &= 2
+\end{align*}
+
+Now that we solved for our coefficient, we can plug it back into our equation, giving us:
+
+\begin{align*}
+    a_n = 2(2)^n - 1 \\
+\end{align*}
+
+But let's verify our (above) closed form solution, comparing the values of a recursive equation against the closed form equation.
+
+Starting with the recursive solution, we arrive at the following values:
+
+\begin{align*}
+    a_0 &= 1 \\
+    a_1 &= 2a_{n-1} + 1, 2a_{1-1} + 1, 2a_{0} + 1, 2 + 1, 3 \\
+    a_2 &= 2a_{n-1} + 1, 2a_{2-1} + 1, 2a_{1} + 1, 2 + 1, 7 \\
+    a_3 &= 2a_{n-1} + 1, 2a_{3-1} + 1, 2a_{2} + 1, 14 + 1, 15 \\
+\end{align*}
+
+Solving for four values should do the trick. Let's move on to solving four values using the closed form equation:
+
+\begin{align*}
+    a_0 &= 2(2)^n - 1, 2(2)^0 - 1, 2 - 1, 1 \\
+    a_1 &= 2(2)^n - 1, 2(2)^1 - 1, 4 - 1, 3 \\
+    a_2 &= 2(2)^n - 1, 2(2)^2 - 1, 8 - 1, 7 \\
+    a_3 &= 2(2)^n - 1, 2(2)^3 - 1, 16 - 1, 15 \\
+\end{align*}
+
+Great, all is well at the helm, the solutions lining up as expected.
+
+% this is really question 4%
+\section{}
+
+\textbf{Solution:} $2(2^n) - 1$
+
+Problem: $a_0=3, a_1=6$ and $a_n = a_{n-1} + 6a_{n-2}$ for $n \ge 2$.
+
+Like solving all other homogeneous problems, we start with identifying the characteristic equation, followed by solving for the characteristic roots, arriving at the general solution. So, let's start with characteristic equation, by setting $a_n = r$ and then cancelling out $r^{n-2}$, giving us:
+
+\begin{align*}
+    a_n - a_{n-1} - 6a_{n-2} = 0 \\
+    r^n - r^{n-1} - 6r^{n-2} = 0 \\
+    r^2 - r - 6 = 0 \\
+    (r-3)(r+2) = 0 \\
+\end{align*}
+
+With the above characteristic equation, we know that the characteristic roots are: $r=3$ and $r=-2$.
+
+We can then take the characteristic roots and generate the following general solution:
+
+\begin{align*}
+    a_n = \alpha(3)^n + \beta(-2)^n
+\end{align*}
+
+Next, we solve for general solution, plugging in our initial conditions:
+
+\begin{align*}
+    3 &= \alpha(3)^0 + \beta(-2)^0, \alpha + \beta \\
+    6 &= \alpha(3)^1 + \beta(-2)^1, \alpha(3) + \beta(-2) \\
+\end{align*}
+
+We then cancel out the equation and solve for $\alpha$, multiplying the top equation by 2. Doing so give us: $\alpha=\frac{12}{5}$. Then, we plug $\alpha$ back in, arriving at $\beta = \frac{3}{5}$. Now that we solved for our coefficients, we can plug them into our general solution, giving us:
+
+\begin{align*}
+    a_n = \frac{12}{5}(3)^n + \frac{3}{5}(-2)^n
+\end{align*}
+
+Let's confirm our solution, solving for $a_2$ using the recursive solution and using the closed form solution, comparing the two solutions.
+
+\begin{align*}
+    a_2 &= a_{n-1} + 6a_{n-2}, \\
+        &= a_{2-1} + 6a_{2-2}, \\
+        &= a_{1} + 6a_0, \\
+        &= 6 + 6(3), \\
+        &= 24
+\end{align*}
+
+\begin{align*}
+    a_2 &= \frac{12}{5}(3)^n + \frac{3}{5}(-2)^n, \\
+        &= \frac{12}{5}(3)^2 + \frac{3}{5}(-2)^2, \\
+        &= \frac{12}{5}(3)^2 + \frac{3}{5}(-2)^2, \\
+        &= \frac{12}{5}(9) + \frac{3}{5}(4), \\
+        &= \frac{108}{5} + \frac{12}{5}, \\
+        &= \frac{120}{5}, \\
+        &= 24
+\end{align*}
+
+\section{}
+
+\textbf{Solution: } $
+a_n = \frac{15}{6}(3)^n + \frac{4}{6}(-2)^n + -\frac{1}{6}$ \\
+
+Problem: $a_0 = 1, a1=6$ and $a_n=a_{n-1} + 6a_{n-2} + 1$ for $n \ge 2$
+
+Similar to the previous problem, let's start with identifying the general solution by identifying the characteristic equation, followed by solving for the characteristic roots.
+
+\begin{align*}
+    a^{(h)}_n &= r^2 - r - 6 \\
+              &= (r-3)(r+2) \\
+\end{align*}
+
+Solving for $r$, we get: $r=3; r=-3$. We leverage these characteristic roots, arriving at our general solution:
+
+\begin{align*}
+\alpha(3)^n + \beta(-2)^n
+\end{align*}
+
+But before we can solve for the coefficients, we need to solve for the particular solution. Because $f(n)$ is 1, we can use $A$ as our constant, giving us:
+
+\begin{align*}
+A^{(p)}_n = A \\
+A = A + 6A + 1 \\
+A = 7A + 1 \\
+-6A = 1 \\
+A = -\frac{1}{6} \\
+\end{align*}
+
+Now, with the homogeneous solution and particular solved, let's combine them:
+
+\begin{align*}
+A_n = A^{(h)}_n + A^{(p)}_n = \alpha(3)^n + \beta(-2)^n + -\frac{1}{6} \\
+\end{align*}
+
+Now, let's plug in each of our initial cases, solving for the coefficients:
+
+\begin{align*}
+3 &= \alpha(3)^n + \beta(-2)^n + -\frac{1}{6}, \\
+3  &= \alpha(3)^0 + \beta(-2)^0 + -\frac{1}{6}, \\
+3  &= \alpha + \beta + -\frac{1}{6} \\
+\end{align*}
+
+\begin{align*}
+6 &= \alpha(3)^n + \beta(-2)^n + -\frac{1}{6}, \\
+6 &= \alpha(3)^1 + \beta(-2)^1 + -\frac{1}{6}, \\
+6 &= \alpha(3) + \beta(-2) + -\frac{1}{6}, \\
+\end{align*}
+
+If we solve for $\beta$ by cancelling out the equations, we get $\alpha=\frac{15}{6};\beta=\frac{4}{6}$.
+
+Stuffing these two back into the original equation, we get:
+
+\begin{align*}
+\frac{15}{6}(3)^n + \frac{4}{6}(-2)^n + -\frac{1}{6}
+\end{align*}
+
+Let's verify our answer, by first calculating $a_2$ using the recursive equation, the comparing it against our closed form formula.
+
+\begin{align*}
+a_2 &= a_{n-1} + 6a_{n-2} + 1 \\
+    &= a_{2-1} + 6a_{2-2} + 1 \\
+    &= a_{1} + 6a_{0} \\
+    &= 6 + 6(3) + 1 \\
+    &= 6 + 18 + 1 \\
+    &= 25
+\end{align*}
+
+Now that we've calculated $a_3$ recursively, let's proceed with solving the same problem with the closed form formula
+
+\begin{align*}
+a_2 &= \frac{15}{6}(3)^n + \frac{4}{6}(-2)^n + -\frac{1}{6}\\
+    &= \frac{15}{6}(3)^2 + \frac{4}{6}(4) + -\frac{1}{6}\\
+    &= \frac{15}{6}(9) + \frac{4}{6}(4) + -\frac{1}{6} \\
+    &= \frac{135}{6} + \frac{16}{6} + -\frac{1}{6} \\
+    &= \frac{150}{6} \\
+    &= 25  \\
+\end{align*}
+
+\section{}
+
+\textbf{Solution: } $a_n = \frac{1}{4}(3)^n + \frac{17}{12}(3)^n + \frac{n}{4} + \frac{3}{4}$
+
+Problem: $a_0=1; a_1=6; a_n = 6a_{n-1} - 9a_{n-2} + n$
+
+First, we need to solve the homogeneous problem. The characteristic equation is $r^2 - 6r + 9$:
+
+\begin{align*}
+a_n - 6a_{n-1} + 9a_{n-2} \\
+r^2 - 6r +9 \\
+(r-3)(r-3) \\
+\end{align*}
+
+Because both characteristic roots equals 3, the general solution is: $a_n = \alpha(3)^n + \beta(n)(3)^n$. 
+
+Before solving for the coefficients, we need to solve for the particular solution, which involve some (educated) guessing. In fact, for this type of polynomial, let's guess with: $An + B$. With this guess, let's set up to solve for the particular solution:
+
+\begin{align*}
+A_n &= An + B \\
+An + B &= 6(A(n-1) + B) - 9(A(n-2) + B) + n \\
+An + B &= 6(An - A + B) - 9(An - 2A + B + n \\
+An + B &= 6An - 6A + 6B - 9An + 18A - 9B + n \\
+       &= 5An - 6A + 5B - 9An + 18A - 9B + n \\
+       &= -4An + 12A -4B + n \\
+       &= 4An - 12A + 4B - n \\
+       &= 4An - n - 12A + 4B \\
+       &= n(4A-1) - 12A + 4B \\
+\end{align*}
+
+From this, we can conclude that $A=\frac{1}{4}$ and $-12A + 4B = 0$ so that $B=\frac{3}{4}$. Now that we calculated the particular solution, $a^{(p)}_n$, let's combine it with our homogeneous solution, giving us:
+
+Thus, our particular solution is:
+
+\begin{align*}
+a^{(p)}_n = \frac{n}{4} + \frac{3}{4} \\
+\end{align*}
+
+\begin{align*}
+a_n &= \alpha(3)^n + \beta(n)(3)^n + \frac{n}{4} + \frac{3}{4} \\
+\end{align*}
+
+\begin{align*}
+1 &= \alpha(3)^0 + \beta(0)(3)^0 + \frac{2}{4} + \frac{3}{4} = \alpha + \frac{2}{4} + \frac{3}{4} \\
+6 &= \alpha(3)^1 + \beta(1)(3)^1 + \frac{2}{4} + \frac{3}{4} = \alpha(3) + \beta(3) + \frac{2}{4} + \frac{3}{4} \\
+\end{align*}
+
+Solving for $\alpha$, we get: $\alpha = \frac{1}{4}$. And now that we solved for $\alpha$, we take this value and plug it back into the equation to solve for $\beta$, giving us: $\beta = \frac{17}{12}$
+
+Now that we've identified our coefficients, our equation is now:
+
+\begin{align*}
+a_n = \frac{1}{4}(3)^n + \frac{17}{12}(n)(3)^n + \frac{n}{4} + \frac{3}{4}
+\end{align*}
+
+Let's verify that this solution is correct by comparing our recursive solution against the closed form solution, when calculating for $a_2$. Start with solving for the solution recursively:
+
+\begin{align*}
+    a_2 &= 6a_{n-1} - 9a_{n-2} + n \\
+    a_2 &= 6a_{2-1} - 9a_{2-2} + 2 \\
+    a_2 &= 6a_{1} - 9a_{0} + 2 \\
+    a_2 &= (6)(6) - 9(1) + 2 \\
+    a_2 &= 29 \\
+\end{align*}
+
+Combining the equations give us:
+
+\begin{align*}
+a_n & = \frac{1}{4}(3)^n + \frac{17}{12}(n)(3)^n + \frac{n}{4} + \frac{3}{4} \\
+\end{align*}
+
+\begin{align*}
+a_2 & = \frac{1}{4}(3)^2 + \frac{17}{12}(2)(3)^2 + \frac{2}{4} + \frac{3}{4} \\
+a_2 & = \frac{9}{4} + \frac{306}{12}(2)(3)^2 + \frac{5}{4} \\
+a_2 & = \frac{27}{12} + \frac{306}{12} + \frac{15}{12} \\
+a_2 & = \frac{27}{12} + \frac{306}{12} + \frac{15}{12} \\
+a_2 & = \frac{348}{12} \\
+a_2 & = 29 \\
+\end{align*}
+
+\newpage
+
+\section{Bonus:}
+
+\textbf{Problem: } $a_0 = 0, a_1 = 1$ and $a_n = a_{n-1} + a_{n-2} +2^n$
+
+\begin{align*}
+    a_n - a_{n-1} - a_{n-2} = 0 \\
+    r^2 - r - 1 = 0 \\
+\end{align*}
+
+With the characteristic equation (above), let's solve for the characteristic roots using the quadratic formula ($x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$):
+
+\begin{align*}
+    &= \frac{1 \pm \sqrt{-1^2-4(1)(-1)}}{(2)(1)} \\
+    &= \frac{1 \pm \sqrt{1+4)}}{(2)(1)} \\
+    &= \frac{1 \pm \sqrt{5}}{2} \\
+\end{align*}
+
+With our quadratic equation above, we can now form our general solution:
+
+\begin{align*}
+    &= \alpha(\frac{1 +  \sqrt{5}}{2})^n + \beta(\frac{1 - \sqrt{5}}{2})^n
+\end{align*}
+
+Next, let's solve for the particular solution, guessing with $a_n = A2^n$.
+
+\begin{align*}
+a_n - a_{n-1} - a_{n-2} &= 2^n \\
+A2^n - A2^{n-1} - A2^{n-2} &= 2^n \\
+A - A(\frac{1}{2}) - A(\frac{1}{4}) &= 1 \\
+A - A(\frac{2}{4}) - A(\frac{1}{4}) &= 1 \\
+A\frac{4}{4} - A(\frac{3}{4}) &= 1 \\
+A\frac{1}{4} &= 1 \\
+A &= 4
+\end{align*}
+
+Now that we solved for the particular solution, let's combine our homogeneous and nonhomogeneous solution:
+
+\begin{align*}
+   a_n =  \alpha(\frac{1 +  \sqrt{5}}{2})^n + \beta(\frac{1 - \sqrt{5}}{2})^n + (4)(2)^n
+\end{align*}
+
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 16 - Discrete Mathematics}
+\author{Matt Chung}
+\date{February 06, 2018}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{wasysym}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{indentfirst}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+\subsection{}
+
+\textbf{Solution: }$4 \times (\frac{10!}{7!})(\frac{26!}{22!})$
+
+To explain how I arrived at the answer, let's start with the permutations, beginning with the digits. Since there are 10 digits (i.e. 0-9) and three slots, we get our first permutation: $P(10,3)$. Next up is the combination of (different) letters. Since there are four positions and 26 letters in the alphabet, we arrive at our second permutation: $P(26, 4)$.  Finally, since the problem states that the four letters must stick together, and since there are a total of seven slots, we can conclude that there are four possible variations. To elaborate, we can dedicate the first four positions as letters; we can also dedicate the second, third, fourth, and fifth positions; in addition, we can dedicate the third, fourth, fifth, sixth; finally, we can allocate the fourth, fifth, sixth, and seventh positions. Therefore, we multiply the permutations by four.
+
+\subsection{}
+
+\textbf{Solution: } $\frac{100!}{96!}$
+
+This problem is a combination problem, when order does not matter. Since there are four available positions, the first position can be filled with any of the 100 digits (i.e. 0-99). With the first position filled, the second position can be any 99 of the digits (since we already selected one of the digits for the first position), and so on. Therefore, this combination can be expressed as: $C(100, 4)$.
+
+\section{}
+
+\textbf{Solution: } $-326592$
+
+We can apply the binomial theorem for $x^4y^5$ in the expansion of $(3x-2y)^9$, expressing the problem as a combination:
+
+$\binom{9}{4}(3^4)(-2^5) = -\frac{9!}{4!5!}(3^4)(2^5) = -\frac{9\cdot8\cdot7\cdot6}{4\cdot3\cdot2\cdot1}(3^4)(2^5) = (-126)(81)(32)$
+
+\section{}
+
+\textbf{Solution: }
+
+\begin{align*}
+   \binom{2n}{n} &= \frac{2n!}{(2n-2)!2!} \\
+                 &= \frac{2n \cdot (2n-1)(2n-2)!}{(2n-2)!2!} \\
+                 &= n(2n-1) \\
+                 &= 2n^2 - n \\
+                 &= n^2 -n + n^2 \\
+                 &= n(n-1) + n^2 \\
+                 &= \frac{2n!}{2(n-2)!} + n^2 \\
+                 &= 2\binom{n}{2} + n^2 \\
+\end{align*}
+$\clubsuit$
+
+This problem was extremely tricky. Taking the advice from the text, I started with simplifying each side of the combination to $2n^2 - n$, working my way back up from there, only after plugging in $n=3 and n=4$, trying to identify a pattern.
+
+\section{}
+
+\textbf{Solution: } 3744 possible full house cards and 156 distinct ranks
+
+Let's start with calculating the distinct ranks, a simple combination problem.  We start by breaking this down into two sub problems, the pairs and then the triplets. The pairs can be represented in 13 different ways, 1 for each rank. Similarly, the triplets can be represented in 12 different ways; 12 because since there are only 4 suits (i.e. heart, diamonds, clubs, spades) for each rank (e.g. J, Q) and 2 of those suits were used for the pair combination. Collectively, this gives us: $(13)(12) = 156$.
+
+However, 156 only accounts for the possible distint ranks, not taking into consideration that we can mix and match the suits. For example, assume that we have a full house consisting of the following cards: 2 of hearts, 2 of diamonds, 3 of hearts, 3 of diamonds, 3 of clubs. We can maintain the same ranks, but rotate the suits, giving us: 2 of hearts, 2 of clubs, 3 of hearts, 3 of diamonds, 3 of clubs. That's one example. The total possible number of full house cards can be presented as another combination. The pair as $\binom{4}{2}$; the triplet as $\binom{4}{3}$. We then multiply this against the 156 distinct ranks, giving us:
+
+$ (156)(\frac{4!}{2!2!})(\frac{4!}{3!}) = (156)(6)(4) = 3744$
+
+\newpage
+\section{}
+\textbf{Solution: } 1440
+
+We have 7 slots, the first must start with an or end with a. Let's begin with assuming that the "a" sits in the first slot, leaving us 6 six slots for the remaining letters, which can be represented as a permutation: $6!$. Similarly, let's assume that with the seven slots, the last is filled in with an "a". Therefore, the first six slots can be also be represented as $6!$. Combining the two, we get:
+
+$(6!) + (6!) = 720 + 720 = 1440$
+
+\section{Bonus}
+
+There are 10 clowns and twelve lion tamers
+
+\subsection{}
+
+\textbf{Solution: } $\frac{22!}{5!27!}$ or $\binom{22}{5}$
+
+The total combinations of a committee of 5, selected from a pool of 12 (10 clowns and 12 lions) is a combination problem, where order does not matter. This combination can be presented with the following equation: $\binom{22}{5}$
+
+
+\subsection{}
+
+\textbf{Solution: } $(\frac{(10!}{(2!)(8!)}) \times \frac{(12!)}{(3!)(9!)}$ or $\binom{10}{2} \times \binom{12}{3}$
+
+In this problem, two out of the five people \textbf{must} be clowns. Therefore, the other three must be lion tamers. Therefore, we can separate this problem into two smaller problems, combining the results after. Starting with the two clowns, we get the following combination: $\binom{10}{2}$. Then, we need to calculate the combination for the final three positions, all lion tamers: $\binom{12}{3}$. Then, we multiply the combinations together, yielding: $\binom{10}{2} \times \binom{12}{3}$.
+
+\subsection{}
+
+\textbf{Solution: } ($\frac{12!}{5!7!}) + (\frac{12!}{4!8!} * 10) + (\frac{12!}{(3!9!} \times  (\frac{10!}{2!8!})$ or $\binom{12}{5} + (\binom{12}{4} \times \binom{10}{1}) + \binom{12}{3} \times \binom{10}{2}$
+
+There are three ways in which the number of tamers outnumber the clowns: five tamers and zero clowns, four tamers and one clown, three tamers and two clones.  When there are five tamers, the total number of combinations are: $\binom{12}{5}$. In the second instance, where there are four tamers and one clown, we arrive at the following combination: $\binom{12}{4} \times \binom{10}{1}$. Finally, three tamers and two clowns yields: $\binom{12}{3} \times {10}{2}$.
+
+
+\end{document}

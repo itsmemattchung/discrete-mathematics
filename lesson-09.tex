@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 09 - Discrete Mathematics}
+\author{Matt Chung}
+\date{October 3rd, 2017}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+The set rules:
+\begin{itemize}
+    \item $1 \in S$ and
+    \item If $n \in S$, then $2n + 1 \in S$
+\end{itemize}
+
+\subsection{}
+\textbf{Solution:} Yes. $15 \in S$.
+
+Before I attempt to answer this (and the next) question, I want to build out the set with a few elements. To begin, I know that $1$ is in the set. Therefore, I can construct the next element:$2n + 1 = 2(1) + 1 = 3$. And since $3$ is in the set, we then plug this value to construct the next element: $2n + 1 = 2(3) + 1 = 7$. And so on. We can continue building this out by hand:
+
+\begin{itemize}
+    \item $2n + 1 = 2(1) + 1 = 3$
+    \item $2n + 1 = 2(3) + 1 = 7$
+    \item $2n + 1 = 2(7) + 1 = 15$
+    \item $2n + 1 = 2(15) + 1 = 31$
+    \item $2n + 1 = 2(31) + 1 = 63$
+    \item $2n + 1 = 2(63) + 1 = 127$
+\end{itemize}
+
+\newpage
+
+\subsection{}
+\textbf{Solution: } 65 is not in the set S.
+
+In the previous question, we constructed the first seven elements in the recursive set. None of the elements match 65 (although there is a 63; close, but not good enough).
+
+In addition to building the sets out by hand, I verified my answer by writing some Python code: 
+
+\begin{lstlisting}
+def recursive_set(n):
+    m = (2 * n) + 1
+    print "2n + 1 = 2({n}) + 1 = {m}".format(n=n, m=m)
+    if m > 100:
+        return
+    recursive_set(m)
+
+if __name__ == "__main__":
+    recursive_set(1)
+\end{lstlisting}
+
+The above code produced the following:
+\begin{lstlisting}
+$ python homework_recursive_set.py 
+2n + 1 = 2(1) + 1 = 3
+2n + 1 = 2(3) + 1 = 7
+2n + 1 = 2(7) + 1 = 15
+2n + 1 = 2(15) + 1 = 31
+2n + 1 = 2(31) + 1 = 63
+2n + 1 = 2(63) + 1 = 127
+\end{lstlisting}
+
+\section{}
+
+$\sum = \{a,b,c\}$ defined recursively (1) $a \in S$ (2) if $x \in S$ then $bxc \in S$. List all the strings in $S$ of length seven or less.
+
+\textbf{Solution:}  $S = a, bac, bbacc, bbbaccc$
+
+I start off with $a$ as the initial item in the set, and then tack on a $b$ at the front and $c$ at the end, producing $bac$.  I take this string, and repeat that operation.
+
+
+
+\section{}
+\textbf{Solution: } $\{1\}$
+
+(1) $1 \in S, and $ and (2) if $n \in S$ then $2n - 1 \in S$
+
+This one is tricky. By definition, sets do not contain duplicate elements. So, since $1$ is in the set, and $2n -1 = 2(1) - 1 = 1$, we do not duplicate the element.
+
+\section{}
+
+Describe the strings in the set $S$ of strings over the alphabet $\sum = \{a,b,c\}$ defined recursively by (1) $a \in S$ (2) if $x \in S$ then $ax \in S$ and $xb \in S$ and $xc \in S$.
+
+\textbf{Solution: } A sequence of letters starting with $a$ and ending in either $a$ or $b$ or $c$.
+
+Before I can give an accurate description of the strings in set, I'd like to first start with generating a few items in the set.
+
+The first item in the set is: $\{a\}$. With this element, we can generate the next three items: $\{aa,ab,ac\}$.  With these three elements, I'm still unable to pinpoint a pattern, so I'll continue with generating a few more items before attempting to describe the set. Continuing on: $aa$: $\{aaa, aab, aac\}$; how about for the item $ab$: $\{aba, abb, abc\}$; finally, how about for the item $ac$: $\{aca, acb, acc\}$. This gives us the following: $\{a, aa, ab, ac, aaa, aab, aac, aba, abb, abc, aca, acb, acc\}$. And, just to be certain that I nailed down the pattern, I'm going to continue with a few more items in the set, starting with constructing additional strings from $aaa$: $\{aaaa, aaab, aaac\}$; followed by $aab$: $\{aaba, aabb, aabc\}$; again with $aac$: $\{aaca, aacb, aacc\}$. So, in total, here's what we have (so far): 
+
+$\{a, aa, ab, ac, aaa, aab, aac, aba, abb, abc, aca, acb, acc, aaaa, aaab, aaac, aaba, aabb, aabc\}$.
+
+Now that I have a better understanding of the pattern, I believe an accurate description would be: a sequence of letters starting with $a$ and ending in either $a$ or $b$ or $c$.
+
+\section{}
+\textbf{Solution:} A set, $S$, of positive integers is defined by the rule: (1) $1 \in S$, and (2) if $x \in S$ then $x + 10 \in S$.
+
+Following the above rule, let's generate a few elements in the set:
+
+$\{1, 11, 21, 31, 41, 51, 61, 71, 81, 91, 101, 111, 121\}$
+
+
+\section{}
+
+$(1)(1,1) \in S$, and (2) if $(m,n) \in S$, then $(m + 2), n) \in S$, and $(m, n + 2) \in S$ and $(m + 1, n + 1) \in S$ 
+
+\textbf{Solution: } All ordered pairs where both $m$ and $n$ are positive odd integers, and all ordered pairs where both $m$ and $n$ are positive even integers.
+
+The way I reached this solution was by brute force, generating elements in the set:
+
+
+$\{(1), (1,1), \textbf{(3, 1)}, (1, 3), (2, 2), (5, 3), (5, 1), (3, 3), (4, 2)\}$
+
+$\{(1), (1,1), (3, 1), \textbf{(1, 3)}, (2, 2), (5, 3), (5, 1), (3, 3), (4, 2), (3, 3), (1,5), (2, 4)\}$
+
+$\{(1), (1,1), (3, 1), (1, 3), \textbf{(2, 2)}, (5, 3), (5, 1), (3, 3), (4, 2), (3, 3), (1,5), (2, 4)\}, \textit{(4, 2), (2, 4), (3, 3)}$
+
+$\{(1), (1,1), (3, 1), (1, 3), (2, 2), \textbf{(5, 3)}, (5, 1), (3, 3), (4, 2), (3, 3), (1,5), (2, 4)\}, (4, 2), (2, 4), (3, 3), \textit{(7, 3), (5, 5), (6, 4)}$
+
+The above elements fall into a pattern: ordered pairs where both $m$ and $n$ are even, and all the ordered pairs where $m$ and $n$ are odd.
+
+\end{document}

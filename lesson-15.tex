@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Lesson 15 - Discrete Mathematics}
+\author{Matt Chung}
+\date{January 18, 2017}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{wasysym}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+\subsection{}
+
+\textbf{Solution: 6pm}
+
+Q: What is 3122 hours after 4pm ?
+
+Because 4pm equals 16 hours (i.e. 12 + 4), we take 16 and add it to 3122, giving us: 3138. Then, we take this number and modulo against 24; $3138 = 130(24) + 18$. The remainder, 18, translate to 6pm.
+
+\subsection{}
+
+\textbf{Solution: January}
+
+In a similar fashion, we take 3122 and add 11 (i.e. November), giving us 3133. Then, like before, we modulo 12: $3133 = 261(12) + 1$. The remainder, 1, translates to January.
+
+\section{}
+
+\subsection{}
+
+\textbf{Solution:} $[4]$
+
+We are given the following numbers: $1211, 218, -100, -3333$. First, let's identify the existing classes. $1211 \mod 5 = 1; 218 \mod 5 = 3; -100 \mod 5 = 0; -3333 \mod 5 = 2$. Therefore, since equivalence classes can go up to $m-1$, then we know the missing equivalence class is: 4.
+
+\subsection{}
+
+\textbf{Solution: } 12
+
+$(2311)(3912) \equiv n \mod 20$
+
+First, we calculate $2311 \mod 20 = 11$. Next, we calculate $3912 \mod 20 = 12$. Next, we multiply the two: $11 \cdot 12 = 132$. We then take this number, and modulo it as well: $132 \mod 20 = 12$.
+
+\subsection{}
+
+\textbf{Solution: } 7
+
+$1111^{2222} \equiv n \textnormal{ mod } 9$ 
+
+Let's start solving the problem with the same approach as the textbook, starting with $1111^1 \textnormal{ mod } 9$.
+
+\begin{align*}
+    &1111^1 \mod 9 = 4 \\
+    &1111^2 \mod 9 = 1234321 \mod 9 = 1234321 - 1234314 = 7 \\
+    &1111^3 \mod 9 = 1371330631 \mod 9 = 1371330631 - 1371330630 = 1 \\
+\end{align*}
+
+Now, we can rephrase the equation into: $1111^{3(2200)+2} \equiv (1111^3)^{2200}(1111^2) \equiv (1^{2200})(7) \equiv 7$
+
+\section{}
+
+\textbf{Solution: } $x \equiv -90(\mod 133)$
+
+%Find all solutions: $91x \equiv 189 mod 931$.
+
+% Does this have anything to do with diophantine equatoins? Seems kind of similar, but not exactly. Let's see.
+
+Apparently, this problem can only be solved it the $gcd(91, 931)$ divides into $189$. So, first, let's solve for the $gcd(931, 91)$ using our favorite Euclidean algorithm.
+
+\begin{align*}
+    gcd(931, 91) &= 10(91) + 21 \\
+    gcd(91, 21)  &= 4(21) + 7 \\
+    gcd(21, 7)   &= 3(7) + 0 \\
+    gcd(7, 0)    &= 7
+\end{align*}
+
+Now, we need to check if 7 divides evenly into 189. And it does: $189 = 7(27)$. Therefore, we can proceed with solving the equation since the prerequisite holds true.
+
+\begin{align*}
+    91(-10) + 931(1) &= 21 \\
+    91(-90) + 931(9) &= 189
+\end{align*}
+
+The only thing we care about is $91(x)$. And $x = -90$.
+
+Therefore, the formula for all the solutions is: $x \equiv -90 ((\mod)\frac{931}{gcd(931,91)}$. This is the same as $x \equiv -90 (mod 133)$
+
+\newpage
+
+\section{}
+
+% A multiple choice test contains 10 questions, each question with four possible solutions
+
+\subsection{}
+
+
+\textbf{Solution: } $4^{10}$.
+
+For the first question, there are four options -- same for the second. So if there were only two questions, there would be 16 possible solutions (i.e. $4 \cdot 4$). But since there are 10, the solution is: $4^{10}$
+
+\subsection{}
+
+\textbf{Solution: } $5^{10}$.
+
+Similar to the previous problem, the first question contains five possible options -- same for the second question. So if there were only two questions, there would be a 25 possible solutions (i.e. $5 \dot 5$). But since there are 10 questions, the solution is: $5^{10}$.
+
+\section{}
+
+\subsection{}
+
+\textbf{Solution: } $26^7 - 25^7$
+% How many 7 letter words contain at least one X ?
+
+First, let's start with how many 7 letter words there are in total, starting with the first letter, which gives us 25 possibilities. Same with the second, third, fourth, and so on. Therefore, the total number of 7 letter words is: $26^{7} = 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26 \cdot 26$. This is the \textbf{Total}.
+
+
+Next, we need to identify the \textbf{Bad} set. Since a bad set would mean that any of the position can be anything other than an x, we get the following: $25^7$. None of the seven positions containing an x.
+
+Now that we have the total and bad, we can calculate the good: $26^7 - 25^7$.
+
+
+\subsection{}
+\textbf{Solution: } $26^7 - (25^7 + 6(25^6))$
+
+How many seven letter words contain at least two X's ?
+
+For this problem, we must take a similar approach, starting off with calculating the total, which is the same as the previous problem; the total number of possibilities is: $26^7$.
+
+Next, how about bad? Since bad is all combinations with zero or one X. For zero, we get $25^7$ and for one x, we get $6(25^6)$, combining them to get: $25^7 + (6(25^6))$.
+
+Now that we calculated the total and the bad, we can calculate the good: $26^7 - (25^7 + 6(25^6))$.
+
+% GOOD = Total - Bad
+
+\newpage
+
+\section{}
+
+\textbf{Solution: } $(26^3)(10^2) + (26^2)(10^3)$
+
+Two types of codes:
+
+\begin{itemize}
+  \item Three letters followed by two digits (e.g. abc12)
+  \item Two letters followed by three digits (e.g. ab123)
+
+\end{itemize}
+
+We can break down each code into a separate set of tasks.
+
+For the first type of code:
+
+\begin{itemize}
+  \item First task: The combination of three letters is - $26^3$.
+  \item Second task: Two digits - $10^2$
+\end{itemize}
+
+For the second type of code:
+
+\begin{itemize}
+  \item First task: Two letters - $26^2$
+  \item Second task: Three digits - $10^3$.
+\end{itemize}
+
+Since a valid code combines both types of codes, we join them with an OR statement:  $(26^3)(10^2) + (26^2)(10^3)$
+
+
+\end{document}
